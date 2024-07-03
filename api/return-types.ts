@@ -1,3 +1,3 @@
-import { Event } from "../types/storage.js";
+import { Event } from "../types/event.js";
 
 export type FilterEventsReturn = Event[];
