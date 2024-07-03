@@ -85,7 +85,7 @@ async function start() {
 
   process.stdin.on("data", (input) => {
     try {
-      const command = input.toString();
+      const command = input.toString().trim();
       if (command.startsWith("sync ")) {
         // In case some event logs were missed
         const args = command.split(" ").slice(1);
