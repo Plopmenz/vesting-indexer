@@ -6,7 +6,7 @@ import { Storage } from "../types/storage.js";
 
 export function watchERC721OwnerBeneficiaryCreated(contractWatcher: ContractWatcher, storage: Storage) {
   contractWatcher.startWatching("ERC721OwnerBeneficiaryCreated", {
-    abi: parseAbi(["event ERC721OwnerBeneficiaryCreated(address ownerToken)"]),
+    abi: parseAbi(["event ERC721OwnerBeneficiaryCreated(address indexed ownerToken)"]),
     eventName: "ERC721OwnerBeneficiaryCreated",
     strict: true,
     onLogs: async (logs) => {

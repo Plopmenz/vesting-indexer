@@ -6,7 +6,7 @@ import { Storage } from "../types/storage.js";
 
 export function watchBeneficiaryCreated(contractWatcher: ContractWatcher, storage: Storage) {
   contractWatcher.startWatching("BeneficiaryCreated", {
-    abi: parseAbi(["event BeneficiaryCreated(address beneficiary)"]),
+    abi: parseAbi(["event BeneficiaryCreated(address indexed beneficiary)"]),
     eventName: "BeneficiaryCreated",
     strict: true,
     onLogs: async (logs) => {
