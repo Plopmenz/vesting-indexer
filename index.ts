@@ -9,11 +9,13 @@ import { MultichainWatcher } from "./utils/multichain-watcher.js";
 import { PersistentJson } from "./utils/persistent-json.js";
 import { EventsStorage, Storage } from "./types/storage.js";
 import { Address } from "viem";
-import { watchBeneficiaryCreated } from "./event-watchers/BeneficiaryCreated.js";
-import { watchERC721OwnerBeneficiaryCreated } from "./event-watchers/ERC721OwnerBeneficiaryCreated.js";
-import { watchLinearVestingCreated } from "./event-watchers/LinearVestingCreated.js";
-import { watchManagerCreated } from "./event-watchers/ManagerCreated.js";
-import { watchMerkleCreated } from "./event-watchers/MerkleCreated.js";
+import { watchBeneficiaryCreated } from "./event-watchers/vesting/BeneficiaryCreated.js";
+import { watchERC721OwnerBeneficiaryCreated } from "./event-watchers/vesting/ERC721OwnerBeneficiaryCreated.js";
+import { watchLinearVestingCreated } from "./event-watchers/vesting/LinearVestingCreated.js";
+import { watchManagerCreated } from "./event-watchers/vesting/ManagerCreated.js";
+import { watchMerkleCreated } from "./event-watchers/vesting/MerkleCreated.js";
+import { watchERC20Released } from "./event-watchers/rewards/ERC20Released.js";
+
 async function start() {
   const loadEnvResult = loadEnv();
   if (loadEnvResult.error) {
@@ -43,6 +45,8 @@ async function start() {
   };
 
   multichainWatcher.forEach((contractWatcher) => {
+    watchERC20Released(contractWatcher, storage);
+
     watchBeneficiaryCreated(contractWatcher, storage);
     watchERC721OwnerBeneficiaryCreated(contractWatcher, storage);
     watchLinearVestingCreated(contractWatcher, storage);

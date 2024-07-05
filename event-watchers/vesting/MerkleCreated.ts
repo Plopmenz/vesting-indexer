@@ -1,8 +1,8 @@
 import { parseAbi } from "viem";
-import { ContractWatcher } from "../utils/contract-watcher.js";
-import { addEvent, getTimestamp } from "./eventHelpers.js";
-import { MerkleCreated } from "../types/vesting/vesting-events.js";
-import { Storage } from "../types/storage.js";
+import { ContractWatcher } from "../../utils/contract-watcher.js";
+import { addEvent, getTimestamp } from "../eventHelpers.js";
+import { MerkleCreated } from "../../types/vesting/vesting-events.js";
+import { Storage } from "../../types/storage.js";
 
 export function watchMerkleCreated(contractWatcher: ContractWatcher, storage: Storage) {
   contractWatcher.startWatching("MerkleCreated", {

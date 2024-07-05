@@ -1,6 +1,7 @@
 import { Hex } from "viem";
-import { Event, EventsStorage } from "../types/storage.js";
+import { EventsStorage } from "../types/storage.js";
 import { publicClients } from "../utils/chain-cache.js";
+import { Event } from "../types/event.js";
 
 export async function getTimestamp(chainId: number, blockNumber: bigint): Promise<bigint> {
   const publicClient = publicClients[chainId];

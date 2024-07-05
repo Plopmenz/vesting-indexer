@@ -1,8 +1,8 @@
 import { parseAbi } from "viem";
-import { ContractWatcher } from "../utils/contract-watcher.js";
-import { addEvent, getTimestamp } from "./eventHelpers.js";
-import { LinearVestingCreated } from "../types/vesting/vesting-events.js";
-import { Storage } from "../types/storage.js";
+import { ContractWatcher } from "../../utils/contract-watcher.js";
+import { addEvent, getTimestamp } from "../eventHelpers.js";
+import { LinearVestingCreated } from "../../types/vesting/vesting-events.js";
+import { Storage } from "../../types/storage.js";
 
 export function watchLinearVestingCreated(contractWatcher: ContractWatcher, storage: Storage) {
   contractWatcher.startWatching("LinearVestingCreated", {
