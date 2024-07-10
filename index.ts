@@ -15,6 +15,8 @@ import { watchLinearVestingCreated } from "./event-watchers/vesting/LinearVestin
 import { watchManagerCreated } from "./event-watchers/vesting/ManagerCreated.js";
 import { watchMerkleCreated } from "./event-watchers/vesting/MerkleCreated.js";
 import { watchERC20Released } from "./event-watchers/rewards/ERC20Released.js";
+import { watchCliffCreated } from "./event-watchers/vesting/CliffCreated.js";
+import { watchStopAt } from "./event-watchers/vesting/StopAt.js";
 
 async function start() {
   const loadEnvResult = loadEnv();
@@ -48,10 +50,12 @@ async function start() {
     watchERC20Released(contractWatcher, storage);
 
     watchBeneficiaryCreated(contractWatcher, storage);
+    watchCliffCreated(contractWatcher, storage);
     watchERC721OwnerBeneficiaryCreated(contractWatcher, storage);
     watchLinearVestingCreated(contractWatcher, storage);
     watchManagerCreated(contractWatcher, storage);
     watchMerkleCreated(contractWatcher, storage);
+    watchStopAt(contractWatcher, storage);
   });
 
   let isStopping = false;

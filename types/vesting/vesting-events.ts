@@ -7,11 +7,16 @@ export interface VestingEventBase extends EventIdentifier {
   timestamp: bigint;
 }
 
-export type VestingEvent = BeneficiaryCreated | ERC721OwnerBeneficiaryCreated | LinearVestingCreated | ManagerCreated | MerkleCreated | Stop;
+export type VestingEvent = BeneficiaryCreated | CliffCreated | ERC721OwnerBeneficiaryCreated | LinearVestingCreated | ManagerCreated | MerkleCreated | StopAt;
 
 export interface BeneficiaryCreated extends VestingEventBase {
   type: "BeneficiaryCreated";
   beneficiary: Address;
+}
+
+export interface CliffCreated extends VestingEventBase {
+  type: "CliffCreated";
+  cliff: bigint;
 }
 
 export interface ERC721OwnerBeneficiaryCreated extends VestingEventBase {
@@ -36,7 +41,7 @@ export interface MerkleCreated extends VestingEventBase {
   merkletreeRoot: Hash;
 }
 
-export interface Stop extends VestingEventBase {
-  type: "Stop";
-  newDuration: bigint;
+export interface StopAt extends VestingEventBase {
+  type: "StopAt";
+  stop: bigint;
 }
